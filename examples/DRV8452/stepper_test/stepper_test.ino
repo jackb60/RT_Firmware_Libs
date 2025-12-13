@@ -14,9 +14,7 @@ SPISettings settings(1000000, MSBFIRST, SPI_MODE0);
 DRV8452 drv(&SPI_3, settings, CS);
 
 void setup(){
-  digitalWrite(_cs, 1)
-  delay(1000);
-  Serial.begin(115200);
+  delay(100);
   SPI_3.begin();
   drv.setup();
 }
