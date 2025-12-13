@@ -1,3 +1,13 @@
+#include "Arduino.h"
+#include "SPI.h"
+#include "DRV8452.h"
+
+DRV8452::DRV8452(SPIClass* SPI, SPISettings settings, int cs) {
+    _SPI = SPI;
+    _settings = settings;
+    _cs = cs;
+}
+
 void DRV8452::_setCurrentLimit(float current){
   byte value = (current * 0.66 / 3.3) * 256 - 1;
   _writeReg(0x0E, value);
