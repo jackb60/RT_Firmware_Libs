@@ -20,6 +20,8 @@ void DRV8452::fullStep(bool forward){
 }
 
 void DRV8452::setup(){
+  pinMode(_cs, OUTPUT);
+  digitalWrite(_cs, 1);
   _setCurrentLimit(3.5);
   _writeReg(0x05, 0b00110000);
 }
