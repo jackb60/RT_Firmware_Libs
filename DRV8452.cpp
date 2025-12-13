@@ -1,3 +1,7 @@
+#include "Arduino.h"
+#include "SPI.h"
+#include "DRV8452.h"
+
 void DRV8452::setCurrentLimit(float current){
   byte value = (current * 0.66 / 3.3) * 256 - 1;
   _writeReg(0x0E, value);
@@ -10,7 +14,7 @@ void DRV8452::fullStep(bool foward){
 }
 
 void DRV8452::setup(){
-  setCurrentLimit(3.5);
+  _setCurrentLimit(3.5);
   _writeReg(0x05, 0b00110000);
 }
 
